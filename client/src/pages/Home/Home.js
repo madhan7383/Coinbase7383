@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import {
-  StyleSheet, View, StatusBar,
+  StyleSheet, View, StatusBar, Text
 } from 'react-native'
 
 import { colors } from 'theme'
 
-import BidsView from '../../components/bids'
 import SubscriptionView from '../../components/subscriptions'
-import L2View from '../../components/l2update'
+import MatchView from '../../components/match'
+import L2View from '../../components/l2'
+
 
 const styles = StyleSheet.create({
   root: {
@@ -16,10 +17,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
+    backgroundColor: colors.white,
   },
   title: {
-    fontSize: 60,
+    fontSize: 24,
+    marginBottom: 20,
   },
 })
 
@@ -28,8 +30,9 @@ const Home = () => (
     <StatusBar barStyle="light-content" />
 
     <SubscriptionView />
-    <BidsView />
-    <L2View />
+    <MatchView />  
+    <L2View />  
+
 
   </View>
 )

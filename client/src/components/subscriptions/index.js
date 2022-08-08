@@ -6,12 +6,6 @@ import {
 import products from '../../config/products'
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 150,
-  },
   checkboxContainer: {
     flexDirection: 'row',
   },
@@ -41,7 +35,7 @@ const handleChange = (item) => {
 }
 
 const SubscriptionView = () => (
-  <View style={styles.container}>
+  <View>
     <Text style={styles.title}>Subscriptions</Text>
     <View style={styles.checkboxContainer}>
 

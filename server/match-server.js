@@ -1,22 +1,27 @@
+//Coinbase pro library
 const CoinbasePro = require('coinbase-pro');
+// Env Variable
 require('dotenv').config()
 
-const {Server} = require("socket.io"),server = new Server(8000);
+//Server creation
+const {Server} = require("socket.io"),server = new Server(8001);
+// creating hash obj in userdata
+let userdata = new Map();
 
-let data = new Map();
-
-// event fired every time a new client connects:
+// event fired every time a new client connects: Initilize
 server.on("connection", (socket) => {
     console.info(`Client connected [id=${socket.id}]`);
     // initialize this client's sequence number
-    data.set(socket, 1);
+    userdata.set(socket, 1);
 
     // when socket disconnects, remove it from the list:
     socket.on("disconnect", () => {
-      data.delete(socket);
+      userdata.delete(socket);
         console.info(`Client gone [id=${socket.id}]`);
     });
 
+
+    // Consume coinbase pro sub
     coinbaseWs = new CoinbasePro.WebsocketClient(
       ['BTC-USD' , 'ETH-USD', 'LTC-USD'],
       'wss://ws-feed.pro.coinbase.com',
@@ -25,12 +30,15 @@ server.on("connection", (socket) => {
           secret: process.env.SECRET,
           passphrase: process.env.PASSPHRASE,
       },
-      { channels: ['level2','matches'] }
+      { channels: ['matches'] }
    );
-
+    
+   // when msg received on coinbaseWS
     coinbaseWs.on('message',  data => {
 
-      socket.emit('data', data);
+      if(data.type === "match" ){
+        socket.emit('data', data);
+      }
 
     });
 
