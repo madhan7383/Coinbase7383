@@ -5,6 +5,8 @@ require('dotenv').config()
 
 //Server creation
 const {Server} = require("socket.io"),server = new Server(8001);
+
+//map() function lets you manipulate the items in an array by iterating and accessing
 // creating hash obj in userdata
 let userdata = new Map();
 
