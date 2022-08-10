@@ -9,6 +9,7 @@ import { imageAssets } from 'theme/images'
 import { fontAssets } from 'theme/fonts'
 import Navigator from './navigator'
 
+//multi entry points
 const App = () => {
   const [didLoad, setDidLoad] = useState(false)
 

@@ -6,6 +6,7 @@
     "socket.io-client": "^4.5.1"
   },
   "scripts": {
-    "start": "node ./server.js"
+    "l2": "node ./l2-server.js",
+    "match": "node ./match-server.js"
   }
 }

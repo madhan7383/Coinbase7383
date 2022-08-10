@@ -12,6 +12,7 @@ const L2_ENDPOINT = 'ws://localhost:8002'
 
 const l2_socket = socketIOClient(L2_ENDPOINT, { transports: ['websocket'] })
 
+// Native CSS stylesheet
 const styles = StyleSheet.create({
   title: {
     fontSize: 50,
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
 
 function L2View() {
 
+  // Declaring a variable and values to the variable and setting the state variable. And its an object...
   const [l2_data, setL2Data] = useState({});
 
 
@@ -40,7 +42,7 @@ function L2View() {
     }
   })
   
-
+// Const Variable Name and KeyNAme
   return (
     <View>
 

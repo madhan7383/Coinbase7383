@@ -1,3 +1,4 @@
+//inherit react from react package
 import React from 'react'
 import {
   CheckBox, Text, StyleSheet, View,
@@ -21,12 +22,16 @@ const styles = StyleSheet.create({
   },
 })
 
+// Empty Array
 const selectedProducts = []
 
+// Products are pushed to array
 products.forEach((element) => {
+// Initially true for all products. Checkbox is checked for all the products.
   selectedProducts.push({ key: element, value: true })
 })
 
+// check and uncheckbox
 const handleChange = (item) => {
   const index = selectedProducts.findIndex((el) => el.key === item)
   const match = selectedProducts.find((el) => el.key === item)
@@ -43,6 +48,7 @@ const SubscriptionView = () => (
         <><CheckBox
           value={selectedProducts.find((el) => el.key === item).value}
           // eslint-disable-next-line no-unused-vars
+          // handling the checkbox action
           onClick={(evt) => handleChange(item)}
           style={styles.checkbox}
         /><Text style={styles.label}>{item}</Text>

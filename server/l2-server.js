@@ -22,7 +22,7 @@ server.on("connection", (socket) => {
         console.info(`Client gone [id=${socket.id}]`);
     });
 
-    // Subscribe Coinbase pro websocket  
+    // Subscribe Coinbase pro websocket  thru authentication
     coinbaseWs = new CoinbasePro.WebsocketClient(
       ['BTC-USD' , 'ETH-USD', 'LTC-USD'],
       'wss://ws-feed.pro.coinbase.com',
